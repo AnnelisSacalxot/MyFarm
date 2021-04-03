@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package myfarm.TiposPlantas;
+package myfarm.Cuadros;
+
+import myfarm.enums.Estado_cuadro;
 
 /**
  *
  * @author annelis
  */
-public interface Tipo_Semilla  {
-    //Método que solo los Tipo_Semilla tiene
-    public void siembraSemilla();
+public class Limpieza {
+    
+    private Estado_cuadro estado;
+    
 }

@@ -11,8 +11,9 @@ import myfarm.TiposPlantas.Tipo_Semilla;
  *
  * @author annelis
  */
-public interface Tipo_Omnivoro extends Tipo_Semilla {
+public interface Tipo_Omnivoro {
      
+    //Metodos que solo Omnivoro tiene
     public void comidaSemillas();
-    
+    public void tiposProduccionOmnivoro();
 }

@@ -12,16 +12,21 @@ package myfarm.SerVivo;
 public abstract class Plantas extends Intermediario {
     
     private byte semillas_sembrar;
+
+    public Plantas(byte semillas_sembrar, int[] produccion, byte vida, String nombre) {
+        super(produccion, vida, nombre);
+        this.semillas_sembrar = semillas_sembrar;
+        }
+
+    public byte getSemillas_sembrar() {
+        return semillas_sembrar;
+    }
+
+    public void setSemillas_sembrar(byte semillas_sembrar) {
+        this.semillas_sembrar = semillas_sembrar;
+    }
     
-    public Plantas(byte semillas_sembrar,int produccion, byte vida) {
-        super(produccion, vida);
-        this.semillas_sembrar = semillas_sembrar; 
+    
     }
     
 
-
-    @Override
-    public void produccionGenerada() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-}

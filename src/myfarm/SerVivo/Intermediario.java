@@ -16,15 +16,16 @@ public abstract class Intermediario {
  * a 100, para ahorrar espacio en memoria
  */
     
-    private int produccion; 
+    private int[] produccion; 
     private byte vida;
     private String nombre;
     
     
     
-    public Intermediario(int produccion, byte vida){
+    public Intermediario(int[] produccion, byte vida, String nombre){
         this.produccion = produccion;
         this.vida = vida;
+        this.nombre = nombre;
      
 }
     
@@ -33,11 +34,11 @@ public abstract class Intermediario {
     public abstract void produccionGenerada();
   
 
-    public int getProduccion() {
+    public int[] getProduccion() {
         return produccion;
     }
 
-    public void setProduccion(int produccion) {
+    public void setProduccion(int[] produccion) {
         this.produccion = produccion;
     }
 
@@ -57,7 +58,7 @@ public abstract class Intermediario {
         this.nombre = nombre;
     }
 
-    //Esto nos sirve para 
+    //Esto nos sirve para llamar todos los atributos
     
     @Override
     public String toString() {

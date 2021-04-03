@@ -11,6 +11,6 @@ package myfarm.TiposPlantas;
  */
 public interface Tipo_Fruta {
     //Método que solo tiene Tipo_Fruta
-    public void produccionFruta();
-    public void tiempoVidaFruta();
+    public void siembraFruta();
+   
 }

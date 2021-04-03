@@ -11,7 +11,9 @@ import myfarm.TiposPlantas.Tipo_Fruta;
  *
  * @author annelis
  */
-public interface Tipo_Herviboro extends Tipo_Fruta {
+public interface Tipo_Herviboro {
     
+    //Metodos que sólo Herviboro tiene
     public void comidaFruta();
+    public void tiposProduccionHerviboro();
 }

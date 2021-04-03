@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package myfarm.TiposPlantas;
+package myfarm.Cuadros;
 
 /**
  *
  * @author annelis
  */
-public interface Tipo_Semilla  {
-    //Método que solo los Tipo_Semilla tiene
-    public void siembraSemilla();
+public class Recoger_Produccion {
+    
+    private int tiempoAtendiendo;
 }
