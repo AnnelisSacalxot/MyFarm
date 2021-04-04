@@ -10,5 +10,5 @@ package Venta_y_Compra;
  * @author annelis
  */
 public class VentaProductos {
-    
+    //s
 }

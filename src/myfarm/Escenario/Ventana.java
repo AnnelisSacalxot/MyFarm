@@ -16,6 +16,10 @@ public class Ventana extends javax.swing.JFrame {
      */
     public Ventana() {
         initComponents();
+        
+        // Es para que aparezca en el centro y no apareza
+        // en la derecha o izquierda
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,18 +31,27 @@ public class Ventana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelNickName = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNombre.setBackground(new java.awt.Color(204, 0, 51));
+        jLabelNombre.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
+        jLabelNombre.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelNombre.setText("Nombre:");
+        getContentPane().add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        jLabelNickName.setBackground(new java.awt.Color(255, 0, 51));
+        jLabelNickName.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
+        jLabelNickName.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelNickName.setText("Nickname:");
+        getContentPane().add(jLabelNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_principal.jpeg"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 960));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +92,8 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelNickName;
+    private javax.swing.JLabel jLabelNombre;
     // End of variables declaration//GEN-END:variables
 }
