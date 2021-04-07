@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package myfarm.Escenario;
 
 /**
@@ -11,15 +7,24 @@ package myfarm.Escenario;
  */
 public class Ventana extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Ventana
-     */
+    Casilla[][] botones = new Casilla[5][5]; 
+    private int filas = 5;
+    private int columnas = 5;
+    
+    
+   
     public Ventana() {
+        this.botones = new Casilla[filas][columnas];
         initComponents();
+        creacionCasilla();
         
         // Es para que aparezca en el centro y no apareza
         // en la derecha o izquierda
         this.setLocationRelativeTo(null);
+    }
+
+    public Ventana(String myFarm) {
+        
     }
 
     /**
@@ -33,6 +38,10 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabelNombre = new javax.swing.JLabel();
         jLabelNickName = new javax.swing.JLabel();
+        jTextFieldLlenarNombre = new javax.swing.JTextField();
+        jTextFieldLlenarNickName = new javax.swing.JTextField();
+        jButtonIniciarJuego = new javax.swing.JButton();
+        jPanelEscenario = new javax.swing.JPanel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,13 +57,51 @@ public class Ventana extends javax.swing.JFrame {
         jLabelNickName.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
         jLabelNickName.setForeground(new java.awt.Color(255, 0, 0));
         jLabelNickName.setText("Nickname:");
-        getContentPane().add(jLabelNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        getContentPane().add(jLabelNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
+
+        jTextFieldLlenarNombre.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldLlenarNombre.setFont(new java.awt.Font("aakar", 3, 18)); // NOI18N
+        jTextFieldLlenarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldLlenarNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFieldLlenarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 170, -1));
+
+        jTextFieldLlenarNickName.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldLlenarNickName.setFont(new java.awt.Font("aakar", 3, 18)); // NOI18N
+        getContentPane().add(jTextFieldLlenarNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 180, -1));
+
+        jButtonIniciarJuego.setBackground(new java.awt.Color(255, 255, 0));
+        jButtonIniciarJuego.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
+        jButtonIniciarJuego.setForeground(new java.awt.Color(255, 255, 51));
+        jButtonIniciarJuego.setText("Jugar");
+        getContentPane().add(jButtonIniciarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, -1, -1));
+
+        jPanelEscenario.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanelEscenarioLayout = new javax.swing.GroupLayout(jPanelEscenario);
+        jPanelEscenario.setLayout(jPanelEscenarioLayout);
+        jPanelEscenarioLayout.setHorizontalGroup(
+            jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+        jPanelEscenarioLayout.setVerticalGroup(
+            jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanelEscenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 600, 440));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_principal.jpeg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 960));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldLlenarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLlenarNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldLlenarNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,14 +133,36 @@ public class Ventana extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Ventana().setVisible(true);
+                
             }
+            
         });
+    }
+    
+    
+ /*
+ * Se creara un arreglo bidimensional para crear el terreno
+ * donde iran los animales y plantas, para esto se utilizará botones
+ */
+    public void creacionCasilla(){
+        for (int fila = 0; fila<filas;fila++){
+                    for (int columna = 0; columna<columnas;columna++){
+                        botones[fila][columna] = new Casilla(45*columna, 30*fila,55,45);
+                        botones[fila][columna].setTerrenosCasilla(fila,columna);
+                        jPanelEscenario.add( botones [fila][columna] );
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonIniciarJuego;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelNickName;
     private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JPanel jPanelEscenario;
+    private javax.swing.JTextField jTextFieldLlenarNickName;
+    private javax.swing.JTextField jTextFieldLlenarNombre;
     // End of variables declaration//GEN-END:variables
 }

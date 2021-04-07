@@ -5,6 +5,8 @@
  */
 package myfarm;
 
+import myfarm.Escenario.Ventana;
+
 /**
  *
  * @author annelis
@@ -16,6 +18,7 @@ public class MyFarm {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
     }
     
 }
