@@ -1,28 +1,63 @@
 
 package myfarm.Escenario;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author annelis
  */
 public class Ventana extends javax.swing.JFrame {
 
-    Casilla[][] botones = new Casilla[5][5]; 
-    private int filas = 5;
-    private int columnas = 5;
-    
-    
+  
    
     public Ventana() {
-        this.botones = new Casilla[filas][columnas];
+        
         initComponents();
-        creacionCasilla();
+      
         
         // Es para que aparezca en el centro y no apareza
         // en la derecha o izquierda
         this.setLocationRelativeTo(null);
+        creacionCasillas();
     }
-
+    
+    //Características que tendrán los botones generalmente
+    
+    int filas = 5;
+    int columnas = 5;
+    int largoBoton = 80;
+    int anchoBoton = 80;
+    int ejeX = 20;
+    int ejeY = 20;
+    
+    
+    /**
+     * Se creara un arreglo de botones para poder crear el escenario
+     * ya que estos tiene que recibir alguna accion, 
+     */
+    
+    public JButton [][] Casillas = new JButton[filas][columnas];
+    
+    public void creacionCasillas(){
+        
+        Casillas = new JButton[filas][columnas];
+        
+        for (int fila = 0; fila < filas; fila++) {
+            for (int columna = 0; columna < columnas; columna++) {
+                //Empieza a llamar el conteo de filas y columnas
+                Casillas [fila][columna] = new JButton(); 
+                Casillas [fila][columna].setBounds(ejeX,ejeY,largoBoton,anchoBoton); 
+                jPanelEscenario.add(Casillas [fila][columna]);
+                
+                ejeX += 80;
+            }
+            ejeY += 80;
+            ejeX =20;
+        }
+        
+    }
+    
     public Ventana(String myFarm) {
         
     }
@@ -72,7 +107,7 @@ public class Ventana extends javax.swing.JFrame {
         jTextFieldLlenarNickName.setFont(new java.awt.Font("aakar", 3, 18)); // NOI18N
         getContentPane().add(jTextFieldLlenarNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 180, -1));
 
-        jButtonIniciarJuego.setBackground(new java.awt.Color(255, 255, 0));
+        jButtonIniciarJuego.setBackground(new java.awt.Color(0, 0, 0));
         jButtonIniciarJuego.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
         jButtonIniciarJuego.setForeground(new java.awt.Color(255, 255, 51));
         jButtonIniciarJuego.setText("Jugar");
@@ -88,10 +123,10 @@ public class Ventana extends javax.swing.JFrame {
         );
         jPanelEscenarioLayout.setVerticalGroup(
             jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanelEscenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 600, 440));
+        getContentPane().add(jPanelEscenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 600, 490));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_principal.jpeg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 960));
@@ -146,15 +181,7 @@ public class Ventana extends javax.swing.JFrame {
  * Se creara un arreglo bidimensional para crear el terreno
  * donde iran los animales y plantas, para esto se utilizará botones
  */
-    public void creacionCasilla(){
-        for (int fila = 0; fila<filas;fila++){
-                    for (int columna = 0; columna<columnas;columna++){
-                        botones[fila][columna] = new Casilla(45*columna, 30*fila,55,45);
-                        botones[fila][columna].setTerrenosCasilla(fila,columna);
-                        jPanelEscenario.add( botones [fila][columna] );
-            }
-        }
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIniciarJuego;
