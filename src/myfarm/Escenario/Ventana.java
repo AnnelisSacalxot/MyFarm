@@ -1,7 +1,12 @@
 
 package myfarm.Escenario;
 
+import Manejadores.manejadorVida;
+import java.awt.Color;
+import java.util.Random;
 import javax.swing.JButton;
+import Manejadores.manejadorVida;
+import Manejadores.manejadorOro;
 
 /**
  *
@@ -9,17 +14,21 @@ import javax.swing.JButton;
  */
 public class Ventana extends javax.swing.JFrame {
 
+  private manejadorVida vidaPuntos;
+  private manejadorOro oroPuntos;
   
-   
+  
     public Ventana() {
         
         initComponents();
       
-        
-        // Es para que aparezca en el centro y no apareza
-        // en la derecha o izquierda
+ /**
+ *Es para que aparezca en el centro y no apareza
+ *      en la derecha o izquierda
+ */
+
         this.setLocationRelativeTo(null);
-        creacionCasillas();
+        //creacionCasillas();
     }
     
     //Características que tendrán los botones generalmente
@@ -32,29 +41,67 @@ public class Ventana extends javax.swing.JFrame {
     int ejeY = 20;
     
     
-    /**
-     * Se creara un arreglo de botones para poder crear el escenario
-     * ya que estos tiene que recibir alguna accion, 
-     */
+  /*
+ * Se creara un arreglo bidimensional para crear el terreno
+ * donde iran los animales y plantas, para esto se utilizará botones
+ *  con JButton
+ */
     
     public JButton [][] Casillas = new JButton[filas][columnas];
     
     public void creacionCasillas(){
         
+       Random tiro = new Random();
+        
         Casillas = new JButton[filas][columnas];
         
         for (int fila = 0; fila < filas; fila++) {
             for (int columna = 0; columna < columnas; columna++) {
-                //Empieza a llamar el conteo de filas y columnas
+                
+                /** 
+                 * Empieza a llamar el conteo de filas y columnas
+                 */
+                
                 Casillas [fila][columna] = new JButton(); 
                 Casillas [fila][columna].setBounds(ejeX,ejeY,largoBoton,anchoBoton); 
                 jPanelEscenario.add(Casillas [fila][columna]);
+                
+     /**
+     * @param Casillas, se usara esta sentencia para decidir los colores
+     * que se tendrá en cada cuadro o casilla
+     */        
+  
+                if ((fila+columna)<=40) {
+                    Casillas [fila][columna].setBackground(Color.GREEN);
+                } else if ((fila+columna)<=41+75) {
+                    Casillas [fila][columna].setBackground(Color.BLUE);
+                } else if ((fila+columna)<=76+100) {
+                    Casillas [fila][columna].setBackground(Color.YELLOW);
+                }
                 
                 ejeX += 80;
             }
             ejeY += 80;
             ejeX =20;
         }
+        
+    }
+    
+    
+     /**
+     * En los dos siguientes metodos se manejara la Vida y el Oro del usurio
+     * ya que estos pueden tener cambios durante el tiempo y también para que al
+     * inicio de la partida le de los valores correspondientes de vida inicial y oro inicial
+     */
+    
+    
+    public void puntajeVida(){
+       
+        jLabelControlVida.setText(jLabelVida.getText() + "70");
+    } 
+    
+    public void puntajeOro(){
+       jLabelControlOro.setText(jLabelOro.getText() + "1000");
         
     }
     
@@ -77,9 +124,17 @@ public class Ventana extends javax.swing.JFrame {
         jTextFieldLlenarNickName = new javax.swing.JTextField();
         jButtonIniciarJuego = new javax.swing.JButton();
         jPanelEscenario = new javax.swing.JPanel();
+        jLabelVida = new javax.swing.JLabel();
+        jLabelControlVida = new javax.swing.JLabel();
+        jLabelPuntos = new javax.swing.JLabel();
+        jLabelControlPuntos = new javax.swing.JLabel();
+        jLabelOro = new javax.swing.JLabel();
+        jLabelControlOro = new javax.swing.JLabel();
+        jLabelSaludo = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MyFarm");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelNombre.setBackground(new java.awt.Color(204, 0, 51));
@@ -111,22 +166,68 @@ public class Ventana extends javax.swing.JFrame {
         jButtonIniciarJuego.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
         jButtonIniciarJuego.setForeground(new java.awt.Color(255, 255, 51));
         jButtonIniciarJuego.setText("Jugar");
+        jButtonIniciarJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIniciarJuegoActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonIniciarJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, -1, -1));
 
         jPanelEscenario.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabelVida.setBackground(new java.awt.Color(255, 0, 0));
+        jLabelVida.setText("Vida:");
+
+        jLabelControlVida.setText("0");
+
+        jLabelPuntos.setText("Puntos:");
+
+        jLabelControlPuntos.setText("0");
+
+        jLabelOro.setText("Oro:");
+
+        jLabelControlOro.setText("0");
 
         javax.swing.GroupLayout jPanelEscenarioLayout = new javax.swing.GroupLayout(jPanelEscenario);
         jPanelEscenario.setLayout(jPanelEscenarioLayout);
         jPanelEscenarioLayout.setHorizontalGroup(
             jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEscenarioLayout.createSequentialGroup()
+                .addContainerGap(526, Short.MAX_VALUE)
+                .addGroup(jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelControlOro)
+                    .addComponent(jLabelOro)
+                    .addComponent(jLabelControlPuntos)
+                    .addComponent(jLabelPuntos)
+                    .addGroup(jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelControlVida)
+                        .addComponent(jLabelVida)))
+                .addGap(26, 26, 26))
         );
         jPanelEscenarioLayout.setVerticalGroup(
             jPanelEscenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(jPanelEscenarioLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabelVida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelControlVida)
+                .addGap(51, 51, 51)
+                .addComponent(jLabelPuntos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelControlPuntos)
+                .addGap(46, 46, 46)
+                .addComponent(jLabelOro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelControlOro)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelEscenario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 600, 490));
+
+        jLabelSaludo.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelSaludo.setFont(new java.awt.Font("aakar", 3, 24)); // NOI18N
+        jLabelSaludo.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jLabelSaludo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 95, 540, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo_principal.jpeg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 960));
@@ -135,8 +236,22 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldLlenarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLlenarNombreActionPerformed
-        // TODO add your handling code here:
+   
+        
     }//GEN-LAST:event_jTextFieldLlenarNombreActionPerformed
+
+    private void jButtonIniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarJuegoActionPerformed
+                //Ahora hacemos que salude al usuario
+       /**
+     * @param setText y getText, los usaremos para que nos devuelva el 
+     * saludo al usuario ya que estos devuelven lo que el usurio coloca
+     * en los TextField
+     */
+        jLabelSaludo.setText(jTextFieldLlenarNickName.getText() + "Bienvenido a la aventura de Myfarm");
+        creacionCasillas();
+        puntajeVida();
+        puntajeOro();
+    }//GEN-LAST:event_jButtonIniciarJuegoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,17 +292,19 @@ public class Ventana extends javax.swing.JFrame {
     }
     
     
- /*
- * Se creara un arreglo bidimensional para crear el terreno
- * donde iran los animales y plantas, para esto se utilizará botones
- */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIniciarJuego;
+    private javax.swing.JLabel jLabelControlOro;
+    private javax.swing.JLabel jLabelControlPuntos;
+    private javax.swing.JLabel jLabelControlVida;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelNickName;
     private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelOro;
+    private javax.swing.JLabel jLabelPuntos;
+    private javax.swing.JLabel jLabelSaludo;
+    private javax.swing.JLabel jLabelVida;
     private javax.swing.JPanel jPanelEscenario;
     private javax.swing.JTextField jTextFieldLlenarNickName;
     private javax.swing.JTextField jTextFieldLlenarNombre;

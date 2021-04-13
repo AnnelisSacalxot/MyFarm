@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/DiferentesAnimalesyPlantas/Maiz.java</file>
+            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/Escenario/Ventana.java</file>
+            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/Escenario/CasillaTierra.java</file>
             <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/SerVivo/Animales.java</file>
             <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/SerVivo/Plantas.java</file>
-            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/TiposPlantas/Tipo_Fruta.java</file>
-            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/TiposPlantas/Tipo_Semilla.java</file>
+            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/Manejadores/manejadorOro.java</file>
+            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/SerVivo/Granjero.java</file>
+            <file>file:/home/annelis/NetBeansProjects/MyFarm/src/Manejadores/manejadorCosecha.java</file>
             <file>file:/home/annelis/NetBeansProjects/MyFarm/src/myfarm/SerVivo/Intermediario.java</file>
         </group>
     </open-files>
